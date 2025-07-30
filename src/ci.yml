@@ -1,0 +1,48 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+      - name: Run Unit Tests
+        run: |
+          pytest
+
+  train-and-quantize:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+      - name: Run Training
+        run: python src/train.py
+      - name: Run Quantization
+        run: python src/quantize.py
+
+  docker-build:
+    needs: train-and-quantize
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Docker
+        run: docker build -t linear-model .
+      - name: Run Docker
+        run: docker run --rm linear-model
