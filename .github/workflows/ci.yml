@@ -36,6 +36,8 @@ jobs:
         run: python src/train.py
       - name: Run Quantization
         run: python src/quantize.py
+      - name: Run Prediction
+        run: python src/predict.py
   docker-build:
     needs: train-and-quantize
     runs-on: ubuntu-latest
