@@ -1,6 +1,7 @@
 import joblib
 import os
 from src.train import train_and_save_model
+from src.train import load_data
 from sklearn.linear_model import LinearRegression
 
 def test_data_loading():
