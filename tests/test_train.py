@@ -1,5 +1,5 @@
 import os
-from src.utils import load_data, load_model, evaluate_model
+from src.utils import load_data
 from src.train import train_and_save_model
 from sklearn.linear_model import LinearRegression
 
