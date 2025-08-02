@@ -41,6 +41,8 @@ jobs:
       - name: Run Prediction
         run: python src/predict.py
         working-directory: ${{ github.workspace }}
+      - name: Copy model to build context
+        run: cp models/model.joblib .
   docker-build:
     needs: train-and-quantize
     runs-on: ubuntu-latest
