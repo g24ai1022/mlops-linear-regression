@@ -40,7 +40,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: trained-model
-          path: models/model.joblib
+          path: artifacts/model.joblib
   docker-build:
     needs: train-and-quantize
     runs-on: ubuntu-latest
