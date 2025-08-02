@@ -9,6 +9,22 @@ def load_data():
     X, y = fetch_california_housing(return_X_y=True)
     return train_test_split(X, y, test_size=0.2, random_state=42)
 
+def git_commit_model(model_path):
+    try:
+        # Stage the model file
+        subprocess.run(["git", "add", model_path], check=True)
+
+        # Commit with a message
+        commit_message = "Add trained model file"
+        subprocess.run(["git", "commit", "-m", commit_message], check=True)
+
+        # Push to the current branch (assumes credentials are setup)
+        subprocess.run(["git", "push"], check=True)
+
+        print("Model committed and pushed to git successfully.")
+    except subprocess.CalledProcessError as e:
+        print(f"Git command failed: {e}")
+
 def train_and_save_model(model_path=None):
     if model_path is None:
         model_path = os.path.join(os.getcwd(), "models", "model.joblib")
