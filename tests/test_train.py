@@ -17,4 +17,3 @@ def test_model_training():
 def test_model_file_created():
     path = "artifacts/test_model.joblib"
     assert os.path.exists(path)
-
