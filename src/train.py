@@ -1,31 +1,14 @@
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
-import joblib
-from sklearn.datasets import fetch_california_housing
-from sklearn.model_selection import train_test_split
-import os
+from utils import load_data, save_model, evaluate_model
 
-def load_data():
-    X, y = fetch_california_housing(return_X_y=True)
-    return train_test_split(X, y, test_size=0.2, random_state=42)
-
-def train_and_save_model(model_path=None):
-    if model_path is None:
-        model_path = os.path.join(os.getcwd(), "models", "model.joblib")
+if __name__ == "__main__":
     X_train, X_test, y_train, y_test = load_data()
+
     model = LinearRegression()
     model.fit(X_train, y_train)
 
-    predictions = model.predict(X_test)
-    r2 = r2_score(y_test, predictions)
-    mse = mean_squared_error(y_test, predictions)
+    r2, mse = evaluate_model(model, X_test, y_test)
+    print(f"Training completed. R2 Score: {r2:.4f}, MSE: {mse:.4f}")
 
-    print(f"R2 Score: {r2}")
-    print(f"Mean Squared Error: {mse}")
-
-    os.makedirs(os.path.dirname(model_path), exist_ok=True)
-    joblib.dump(model, model_path)
-    return model, r2
-
-if __name__ == "__main__":
-    train_and_save_model()
+    model_path = save_model(model)
+    print(f"Model saved to: {model_path}")
