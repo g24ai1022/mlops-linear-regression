@@ -4,5 +4,5 @@ WORKDIR /app
 
 COPY . .
 RUN pip install --upgrade pip && pip install -r requirements.txt
-RUN python train.py
+RUN python src/train.py
 CMD ["python", "src/predict.py"]
