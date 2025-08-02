@@ -9,7 +9,6 @@ COPY . .
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
 # Train the model and save it inside the container
-# Use module run to avoid import errors (make sure __init__.py exists in src/)
 RUN python -m src.train
 
 # Run prediction script by default
