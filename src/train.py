@@ -11,7 +11,7 @@ def load_data():
 
 def train_and_save_model(model_path=None):
     if model_path is None:
-        model_path = os.path.join(os.getcwd(), "models", "model.joblib")
+        model_path = os.path.join(os.getcwd(), "artifacts", "model.joblib")
     X_train, X_test, y_train, y_test = load_data()
     model = LinearRegression()
     model.fit(X_train, y_train)
