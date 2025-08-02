@@ -15,6 +15,6 @@ It includes:
 **Model Comparison Table**
 Metric	   Original Model (float32)	  Quantized Model (float16)
 Model Size	    ~X MB	                  ~Y MB
-R² Score	      0.575                  	~0.575
-MSE            	0.556                  	~0.556
+R² Score	      0.5758                  0.5747
+MSE            	0.556                  	0.556
 InferenceSpeed	Standard	              Faster
