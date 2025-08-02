@@ -5,7 +5,7 @@ from sklearn.datasets import fetch_california_housing
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score
 
-MODEL_DIR = "models"
+MODEL_DIR = "artifacts"
 MODEL_FILE = os.path.join(MODEL_DIR, "model.joblib")
 RAW_PARAMS_FILE = os.path.join(MODEL_DIR, "raw_params.joblib")
 QUANT_PARAMS_FILE = os.path.join(MODEL_DIR, "quant_params.joblib")
