@@ -9,7 +9,7 @@ def test_data_loading():
     assert X_train.shape[0] > 0 and X_test.shape[0] > 0
 
 def test_model_training():
-    model, r2 = train_and_save_model("artifacts/test_model.joblib")
+    model, r2 = train_and_save_model()
     assert isinstance(model, LinearRegression)
     assert hasattr(model, "coef_")
     assert r2 > 0.4  # Example threshold
