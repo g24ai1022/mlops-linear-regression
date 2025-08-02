@@ -1,8 +1,15 @@
-if __name__ == "__main__":
-    model = load_model()
-    _, X_test, _, _ = load_data()
+import joblib
+from sklearn.datasets import fetch_california_housing
+from sklearn.model_selection import train_test_split
 
-    predictions = model.predict(X_test[:5])
-    print("Sample Predictions on first 5 test rows:")
-    for i, pred in enumerate(predictions, start=1):
-        print(f"Row {i}: {pred:.4f}")
+def main():
+    model = joblib.load("models/model.joblib")
+    X, y = fetch_california_housing(return_X_y=True)
+    _, X_test, _, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+    preds = model.predict(X_test[:5])
+    print("Sample Predictions:", preds)
+
+if __name__ == "__main__":
+    main()
+

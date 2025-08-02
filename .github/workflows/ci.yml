@@ -32,18 +32,10 @@ jobs:
       - name: Install Dependencies
         run: |
           pip install -r requirements.txt
-      - name: Run Utils
-        run: python src/utils.py
-        working-directory: ${{ github.workspace }}
       - name: Run Training
         run: python src/train.py
-        working-directory: ${{ github.workspace }}
       - name: Run Quantization
         run: python src/quantize.py
-        working-directory: ${{ github.workspace }}
-      - name: Run Prediction
-        run: python src/predict.py
-        working-directory: ${{ github.workspace }}
   docker-build:
     needs: train-and-quantize
     runs-on: ubuntu-latest
