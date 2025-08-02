@@ -1,5 +1,5 @@
 from sklearn.linear_model import LinearRegression
-from utils import load_data, save_model, evaluate_model
+from src.utils import load_data, save_model, evaluate_model
 
 if __name__ == "__main__":
     X_train, X_test, y_train, y_test = load_data()
