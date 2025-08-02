@@ -45,6 +45,14 @@ jobs:
     needs: train-and-quantize
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+      - name: Download model artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: trained-model
+          path: artifacts
+      - name: Show files in artifacts
+        run: ls -R artifacts
       - uses: actions/checkout@v3
       - name: Setup Docker
         run: docker build -t linear-model .
