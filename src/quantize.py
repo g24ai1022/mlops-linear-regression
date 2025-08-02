@@ -1,6 +1,6 @@
 import numpy as np
 import joblib
-from utils import load_model, load_data, evaluate_model
+from src.utils import load_model, load_data, evaluate_model
 
 if __name__ == "__main__":
     model = load_model()
