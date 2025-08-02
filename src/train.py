@@ -1,5 +1,5 @@
 from sklearn.linear_model import LinearRegression
-from src.utils import load_data, save_model, evaluate_model
+from .utils import load_data, save_model, evaluate_model
 
 def train_and_save_model(filename="model.joblib"):
     X_train, X_test, y_train, y_test = load_data()
